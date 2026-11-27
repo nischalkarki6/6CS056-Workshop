@@ -56,3 +56,34 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Training Institute API
+
+The REST API exposes student and course resources for mobile clients. Start the application with:
+
+```bash
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate
+php artisan serve
+```
+
+All endpoints return JSON. Creating a resource returns `201 Created`, successful reads and updates return `200 OK`, deletes return `204 No Content`, and validation errors return `422 Unprocessable Content`.
+
+| Method | Endpoint | Purpose |
+| --- | --- | --- |
+| GET | `/api/students` | List students |
+| POST | `/api/students` | Create a student |
+| GET | `/api/students/{student}` | Show a student |
+| PUT/PATCH | `/api/students/{student}` | Update a student |
+| DELETE | `/api/students/{student}` | Delete a student |
+| GET | `/api/courses` | List courses |
+| POST | `/api/courses` | Create a course |
+| GET | `/api/courses/{course}` | Show a course |
+| PUT/PATCH | `/api/courses/{course}` | Update a course |
+| DELETE | `/api/courses/{course}` | Delete a course |
+
+Student fields: `name`, `email`, `phone`, optional `address`, and optional `date_of_birth` (`YYYY-MM-DD`). Course fields: `name`, optional `description`, `duration` (weeks), `fee`, `difficulty` (`Easy`, `Medium`, or `Hard`), and optional `is_active`.
+
+Run the API feature tests with `php artisan test --compact tests/Feature/Http/Controllers/Api`.
